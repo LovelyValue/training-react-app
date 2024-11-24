@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import CardButton from './components/CardButton/CardButton';
 import Header from './components/Header/Header';
@@ -22,6 +23,13 @@ function App() {
 		},
 	];
 
+	const [inputData, setInputData] = useState('');
+
+	const inputChange = event => {
+		setInputData(event.target.value);
+		console.log(inputData);
+	};
+
 	return (
 		<div className='app'>
 			<LeftPanel>
@@ -45,7 +53,9 @@ function App() {
 				</JournalList>
 			</LeftPanel>
 
-			<Body>body</Body>
+			<Body>
+				<input type='text' value={inputData} onChange={inputChange} />
+			</Body>
 		</div>
 	);
 }
